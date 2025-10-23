@@ -12,7 +12,8 @@ from django.utils.translation import gettext_lazy as _
 from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
 from cms.utils import get_language_from_request
-from cms.utils.moderator import get_cmsplugin_queryset
+###TODO: fixit it
+###from cms.utils.moderator import get_cmsplugin_queryset
 from cms.utils.plugins import downcast_plugins, build_plugin_tree
 
 from .forms import InheritForm
@@ -99,15 +100,17 @@ class InheritPagePlaceholderPlugin(CMSPluginBase):
             # Otherwise show the live content
             from_page = from_page.get_public_object()
 
-        plugins = get_cmsplugin_queryset(request).filter(
-            placeholder__page=from_page,
-            language=lang,
-            placeholder__slot__iexact=placeholder,
-            parent__isnull=True
-        ).order_by('position').select_related()
+        ###TODO: fixit it
+        ###plugins = get_cmsplugin_queryset(request).filter(
+        ###    placeholder__page=from_page,
+        ###    language=lang,
+        ###    placeholder__slot__iexact=placeholder,
+        ###    parent__isnull=True
+        ###).order_by('position').select_related()
 
-        context['parent_plugins'] = plugins
-        context['parent_output'] = self._render_plugins(plugins, context)
+        ###context['parent_plugins'] = plugins
+        ###context['parent_output'] = self._render_plugins(plugins, context)
+
         return context
 
     def get_form(self, request, obj=None, **kwargs):
