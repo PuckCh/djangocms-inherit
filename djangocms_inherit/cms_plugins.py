@@ -14,7 +14,7 @@ from cms.plugin_pool import plugin_pool
 from cms.utils import get_language_from_request
 ###TODO: fixit it
 ###from cms.utils.moderator import get_cmsplugin_queryset
-from cms.utils.plugins import downcast_plugins, build_plugin_tree
+###from cms.utils.plugins import downcast_plugins, build_plugin_tree
 
 from .forms import InheritForm
 from .models import InheritPagePlaceholder
@@ -56,8 +56,9 @@ class InheritPagePlaceholderPlugin(CMSPluginBase):
 
             plugin_tree = downcast_plugins(plugins, select_placeholder=True)
             plugin_tree = list(plugin_tree)
-            plugin_tree[0].parent_id = None
-            plugin_tree = build_plugin_tree(plugin_tree)
+            ###TODO: check if it's correct to remove
+            ###plugin_tree[0].parent_id = None
+            ###plugin_tree = build_plugin_tree(plugin_tree)
             #  Replace plugin instance with plugin instance with correct
             #  child_plugin_instances set
             yield self._render_plugin(plugin_tree[0], context)
