@@ -6,7 +6,7 @@ try:
 except ImportError:
     # Django<1.7 (deprecated in Django 1.8, removed in 1.9)
     from django.forms.util import ErrorList
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 from cms.models import Page
 
